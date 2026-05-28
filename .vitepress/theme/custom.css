@@ -1,0 +1,573 @@
+/**
+ * LamSơn Edutech — Blue gradient theme
+ * Palette: xanh lam (sky → indigo)
+ */
+
+:root {
+  --vp-c-brand-1: #2563eb;
+  --vp-c-brand-2: #1d4ed8;
+  --vp-c-brand-3: #1e40af;
+  --vp-c-brand-soft: rgba(37, 99, 235, 0.14);
+
+  --vp-c-brand: var(--vp-c-brand-1);
+  --vp-c-brand-light: #3b82f6;
+  --vp-c-brand-lighter: #60a5fa;
+  --vp-c-brand-dark: var(--vp-c-brand-2);
+  --vp-c-brand-darker: var(--vp-c-brand-3);
+
+  --vp-c-sponsor: #1d4ed8;
+
+  --vp-button-brand-border: var(--vp-c-brand-1);
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-bg: var(--vp-c-brand-1);
+  --vp-button-brand-hover-border: var(--vp-c-brand-2);
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-hover-bg: var(--vp-c-brand-2);
+  --vp-button-brand-active-border: var(--vp-c-brand-3);
+  --vp-button-brand-active-text: #ffffff;
+  --vp-button-brand-active-bg: var(--vp-c-brand-3);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #1e40af 10%, #2563eb 45%, #38bdf8 90%);
+
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #3b82f6 50%, #60a5fa 50%);
+  --vp-home-hero-image-filter: blur(64px);
+
+  --vp-custom-block-tip-border: transparent;
+  --vp-custom-block-tip-text: var(--vp-c-brand-2);
+  --vp-custom-block-tip-bg: rgba(37, 99, 235, 0.08);
+  --vp-custom-block-tip-code-bg: rgba(37, 99, 235, 0.12);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark {
+  --vp-c-brand-1: #60a5fa;
+  --vp-c-brand-2: #3b82f6;
+  --vp-c-brand-3: #2563eb;
+  --vp-c-brand-soft: rgba(96, 165, 250, 0.16);
+
+  --vp-c-brand: var(--vp-c-brand-1);
+  --vp-c-brand-light: #93c5fd;
+  --vp-c-brand-lighter: #bfdbfe;
+
+  --vp-home-hero-name-background: linear-gradient(120deg, #60a5fa 10%, #38bdf8 50%, #a5f3fc 90%);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #1d4ed8 50%, #3b82f6 50%);
+}
+
+/* ============== Background phủ toàn trang home ============== */
+/* Để background đồng nhất cả khu vực footer, áp vào html khi đang ở home */
+
+html:has(.VPHome) {
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(56, 189, 248, 0.2) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 5%, rgba(37, 99, 235, 0.18) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 40%, rgba(96, 165, 250, 0.12) 0%, transparent 60%),
+    linear-gradient(180deg, #f8fafc 0%, #eff6ff 100%);
+  background-attachment: fixed;
+}
+
+html.dark:has(.VPHome) {
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(56, 189, 248, 0.1) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 5%, rgba(37, 99, 235, 0.14) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 40%, rgba(29, 78, 216, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #0b1220 0%, #0a0f1c 100%);
+  background-attachment: fixed;
+}
+
+/* Khi ở trang home, các container trên cùng để trong suốt để lộ bg */
+html:has(.VPHome) body,
+html:has(.VPHome) .Layout,
+html:has(.VPHome) .VPContent,
+html:has(.VPHome) .VPHome {
+  background: transparent;
+}
+
+/* Footer ở home: trong suốt + viền trên nhẹ */
+html:has(.VPHome) .VPFooter {
+  background: transparent;
+  border-top: 1px solid rgba(37, 99, 235, 0.12);
+  padding: 28px 24px;
+}
+
+html.dark:has(.VPHome) .VPFooter {
+  border-top-color: rgba(96, 165, 250, 0.15);
+}
+
+/* ============== HERO ============== */
+
+.VPHero .name .clip {
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: var(--vp-home-hero-name-background);
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.VPHero .text {
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.VPHero .tagline {
+  color: var(--vp-c-text-2);
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 640px;
+}
+
+.VPHero .actions .VPButton.brand {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  border-color: transparent;
+  box-shadow: 0 10px 24px -8px rgba(37, 99, 235, 0.55);
+  transition: transform 1s var(--ease-out-soft), box-shadow 1s var(--ease-out-soft), background 1s var(--ease-out-soft);
+}
+
+.VPHero .actions .VPButton.brand:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px -10px rgba(37, 99, 235, 0.65);
+}
+
+.VPHero .actions .VPButton.alt {
+  background: #ffffff;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  color: var(--vp-c-brand-2);
+  transition: all 1s var(--ease-out-soft);
+}
+
+.VPHero .actions .VPButton.alt:hover {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-2);
+}
+
+.dark .VPHero .actions .VPButton.alt {
+  background: rgba(96, 165, 250, 0.06);
+  border-color: rgba(96, 165, 250, 0.3);
+  color: var(--vp-c-brand-1);
+}
+
+.dark .VPHero .actions .VPButton.alt:hover {
+  background: rgba(96, 165, 250, 0.12);
+  border-color: var(--vp-c-brand-1);
+}
+
+/* ============== Default feature cards ============== */
+
+.VPFeature {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
+  transition: transform 1.2s var(--ease-out-soft), box-shadow 1.2s var(--ease-out-soft), border-color 1.2s var(--ease-out-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.VPFeature::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8 0%, #2563eb 50%, #1e40af 100%);
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out-soft);
+}
+
+.VPFeature:hover {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: 0 22px 48px -16px rgba(37, 99, 235, 0.32);
+}
+
+.VPFeature:hover::before { opacity: 1; }
+
+.VPFeature .icon {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(56, 189, 248, 0.12) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  color: var(--vp-c-brand-1);
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+}
+
+.VPFeature h2 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.VPFeature .link-text-value {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+.dark .VPFeature {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.3) 100%);
+}
+
+/* ============== Nav & Sidebar ============== */
+
+.VPNavBarTitle .title {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.VPNavBar .VPNavBarMenuLink:hover { color: var(--vp-c-brand-1); }
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-weight: 700;
+  color: var(--vp-c-brand-2);
+}
+
+.dark .VPSidebarItem.level-0 > .item > .text { color: var(--vp-c-brand-1); }
+
+/* ============== Containers, tables, code ============== */
+
+.custom-block.tip { border-left: 4px solid var(--vp-c-brand-1); }
+
+.vp-doc table { border-radius: 8px; overflow: hidden; }
+
+.vp-doc th {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--vp-c-brand-2);
+  font-weight: 600;
+}
+
+.dark .vp-doc th {
+  background: rgba(96, 165, 250, 0.1);
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc :not(pre) > code {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--vp-c-brand-2);
+  font-weight: 500;
+}
+
+.dark .vp-doc :not(pre) > code {
+  background: rgba(96, 165, 250, 0.12);
+  color: var(--vp-c-brand-1);
+}
+
+/* ============== Home doc area ============== */
+
+.VPHome .vp-doc {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.VPHome .vp-doc h2 {
+  text-align: center;
+  border-top: 0;
+  margin-top: 72px;
+  padding-top: 0;
+  font-size: 30px;
+  letter-spacing: -0.01em;
+}
+
+.VPHome .vp-doc h2::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, #2563eb, #38bdf8);
+  border-radius: 2px;
+}
+
+/* ============== Card grids ============== */
+
+/* Role grid */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 32px 0 16px;
+}
+
+.role-card {
+  display: block;
+  padding: 28px 24px;
+  border-radius: 18px;
+  text-decoration: none !important;
+  color: inherit;
+  background: linear-gradient(135deg, #ffffff 0%, #dbeafe 100%);
+  border: 1px solid #bfdbfe;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 1.2s var(--ease-out-soft),
+    box-shadow 1.2s var(--ease-out-soft),
+    border-color 1.2s var(--ease-out-soft);
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0) 0%, rgba(37, 99, 235, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out-soft);
+}
+
+.role-card:hover {
+  transform: translateY(-6px);
+  border-color: #2563eb;
+  box-shadow: 0 26px 52px -16px rgba(37, 99, 235, 0.4);
+}
+
+.role-card:hover::before { opacity: 1; }
+
+.role-card.role-student { border-top: 4px solid #38bdf8; }
+.role-card.role-teacher { border-top: 4px solid #2563eb; }
+.role-card.role-admin   { border-top: 4px solid #1e40af; }
+
+.role-icon { font-size: 36px; margin-bottom: 8px; position: relative; }
+.role-title { font-size: 20px; font-weight: 700; color: #1e40af; margin-bottom: 8px; position: relative; }
+.role-desc { font-size: 14px; color: #475569; margin-bottom: 16px; line-height: 1.6; position: relative; }
+.role-action { font-size: 14px; font-weight: 600; color: #2563eb; position: relative; }
+
+.dark .role-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(15, 23, 42, 0.55) 100%);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.dark .role-title { color: #93c5fd; }
+.dark .role-desc { color: #cbd5e1; }
+.dark .role-action { color: #60a5fa; }
+
+/* Exam grid */
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.exam-card {
+  display: block;
+  padding: 20px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  text-decoration: none !important;
+  color: inherit;
+  transition:
+    transform 1.1s var(--ease-out-soft),
+    box-shadow 1.1s var(--ease-out-soft),
+    border-color 1.1s var(--ease-out-soft);
+}
+
+.exam-card:hover {
+  border-color: #2563eb;
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px -12px rgba(37, 99, 235, 0.32);
+}
+
+.exam-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 10px 0 6px;
+  border: none;
+  padding: 0;
+  letter-spacing: -0.01em;
+}
+
+.exam-card p {
+  font-size: 13px;
+  color: #475569;
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.exam-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.12);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.exam-link { font-size: 13px; font-weight: 600; color: #2563eb; }
+
+.dark .exam-card {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+.dark .exam-card h3 { color: #f1f5f9; }
+.dark .exam-card p { color: #cbd5e1; }
+.dark .exam-badge { color: #93c5fd; background: rgba(96, 165, 250, 0.2); }
+.dark .exam-link { color: #60a5fa; }
+
+/* Why grid - 4 cột */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.why-card {
+  padding: 24px 20px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  transition:
+    transform 1.1s var(--ease-out-soft),
+    box-shadow 1.1s var(--ease-out-soft),
+    border-color 1.1s var(--ease-out-soft);
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 18px 40px -12px rgba(37, 99, 235, 0.3);
+}
+
+.why-num {
+  font-size: 32px;
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.why-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.why-desc { font-size: 14px; color: #475569; line-height: 1.6; }
+
+.dark .why-card {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.14) 0%, rgba(15, 23, 42, 0) 100%);
+  border-color: rgba(96, 165, 250, 0.22);
+}
+
+.dark .why-title { color: #f1f5f9; }
+.dark .why-desc { color: #cbd5e1; }
+
+@media (max-width: 960px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+/* Help grid */
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 32px 0 64px;
+}
+
+.help-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  text-decoration: none !important;
+  color: inherit;
+  transition:
+    transform 1s var(--ease-out-soft),
+    box-shadow 1s var(--ease-out-soft),
+    border-color 1s var(--ease-out-soft),
+    background 1s var(--ease-out-soft);
+}
+
+.help-card:hover {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -12px rgba(37, 99, 235, 0.25);
+}
+
+.help-icon { font-size: 28px; flex-shrink: 0; }
+.help-text { display: flex; flex-direction: column; gap: 2px; }
+.help-text strong { font-size: 15px; color: #1e40af; font-weight: 700; }
+.help-text span { font-size: 13px; color: #64748b; }
+
+.dark .help-card {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+.dark .help-card:hover { background: rgba(96, 165, 250, 0.12); }
+.dark .help-text strong { color: #93c5fd; }
+.dark .help-text span { color: #cbd5e1; }
+
+/* ============== Scroll-reveal animation ============== */
+/*
+ * Quan trọng: dùng property `translate` (riêng) thay vì `transform`,
+ * để KHÔNG xung đột với `transform: translateY(...)` ở `:hover`.
+ * Hai property này được trình duyệt cộng dồn (translate xảy ra trước transform).
+ */
+
+.reveal {
+  opacity: 0;
+  translate: 0 32px;
+  transition:
+    opacity 1.4s var(--ease-out-soft),
+    translate 1.4s var(--ease-out-soft);
+  will-change: opacity, translate;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Stagger delay - cách nhau 150ms, đủ rõ để thấy lần lượt */
+.role-grid > .reveal:nth-child(1),
+.exam-grid > .reveal:nth-child(1),
+.why-grid  > .reveal:nth-child(1),
+.help-grid > .reveal:nth-child(1) { transition-delay: 0ms; }
+
+.role-grid > .reveal:nth-child(2),
+.exam-grid > .reveal:nth-child(2),
+.why-grid  > .reveal:nth-child(2),
+.help-grid > .reveal:nth-child(2) { transition-delay: 150ms; }
+
+.role-grid > .reveal:nth-child(3),
+.exam-grid > .reveal:nth-child(3),
+.why-grid  > .reveal:nth-child(3),
+.help-grid > .reveal:nth-child(3) { transition-delay: 300ms; }
+
+.exam-grid > .reveal:nth-child(4),
+.why-grid  > .reveal:nth-child(4) { transition-delay: 450ms; }
+
+.exam-grid > .reveal:nth-child(5) { transition-delay: 600ms; }
+.exam-grid > .reveal:nth-child(6) { transition-delay: 750ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .role-card, .exam-card, .why-card, .help-card,
+  .VPFeature, .VPHero .actions .VPButton {
+    transition: none !important;
+    transform: none !important;
+    translate: 0 0 !important;
+    opacity: 1 !important;
+  }
+}
