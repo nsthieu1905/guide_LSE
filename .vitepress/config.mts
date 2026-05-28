@@ -5,8 +5,12 @@ export default defineConfig({
   title: "LamSơn Edutech",
   description: "Tài liệu hướng dẫn sử dụng hệ thống LamSơn Edutech dành cho Quản trị viên, Giáo viên và Học viên",
   lang: 'vi-VN',
+  // Base path khi deploy lên GitHub Pages: https://nsthieu1905.github.io/guide_LSE/
+  // Nếu sau này dùng custom domain (lamsonedutech.vn) thì đổi lại base: '/'
+  base: '/guide_LSE/',
   cleanUrls: true,
   lastUpdated: true,
+  ignoreDeadLinks: true,
   themeConfig: {
     siteTitle: 'LamSơn Edutech',
     outline: { level: [2, 3], label: 'Trên trang' },
