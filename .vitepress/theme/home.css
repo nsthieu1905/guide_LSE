@@ -1,0 +1,293 @@
+/**
+ * Home page styles - các grid và thẻ trên index.md
+ * Tách riêng để dễ quản lý phần landing.
+ */
+
+/* ============== Role grid (3 thẻ vai trò) ============== */
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin: 32px 0 16px;
+}
+
+.role-card {
+  display: block;
+  padding: 28px 24px;
+  border-radius: 18px;
+  text-decoration: none !important;
+  color: inherit;
+  background: linear-gradient(135deg, #ffffff 0%, #dbeafe 100%);
+  border: 1px solid #bfdbfe;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    transform 1.2s var(--ease-out-soft),
+    box-shadow 1.2s var(--ease-out-soft),
+    border-color 1.2s var(--ease-out-soft);
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0) 0%, rgba(37, 99, 235, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 1.2s var(--ease-out-soft);
+}
+
+.role-card:hover {
+  transform: translateY(-6px);
+  border-color: #2563eb;
+  box-shadow: 0 26px 52px -16px rgba(37, 99, 235, 0.4);
+}
+
+.role-card:hover::before { opacity: 1; }
+
+.role-card.role-student { border-top: 4px solid #38bdf8; }
+.role-card.role-teacher { border-top: 4px solid #2563eb; }
+.role-card.role-admin   { border-top: 4px solid #1e40af; }
+
+.role-icon   { font-size: 36px; margin-bottom: 8px; position: relative; }
+.role-title  { font-size: 20px; font-weight: 700; color: #1e40af; margin-bottom: 8px; position: relative; }
+.role-desc   { font-size: 14px; color: #475569; margin-bottom: 16px; line-height: 1.6; position: relative; }
+.role-action { font-size: 14px; font-weight: 600; color: #2563eb; position: relative; }
+
+.dark .role-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.75) 0%, rgba(15, 23, 42, 0.55) 100%);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+.dark .role-title  { color: #93c5fd; }
+.dark .role-desc   { color: #cbd5e1; }
+.dark .role-action { color: #60a5fa; }
+
+/* ============== Exam grid (6 thẻ kỳ thi) ============== */
+
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.exam-card {
+  display: block;
+  padding: 20px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  text-decoration: none !important;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 1.1s var(--ease-out-soft),
+    box-shadow 1.1s var(--ease-out-soft),
+    border-color 1.1s var(--ease-out-soft);
+}
+
+.exam-card:hover {
+  border-color: #2563eb;
+  transform: translateY(-4px);
+  box-shadow: 0 18px 44px -12px rgba(37, 99, 235, 0.32);
+}
+
+.exam-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 10px 0 6px;
+  border: none;
+  padding: 0;
+  letter-spacing: -0.01em;
+}
+
+.exam-card p {
+  font-size: 13px;
+  color: #475569;
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.exam-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.12);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.exam-link { font-size: 13px; font-weight: 600; color: #2563eb; }
+
+.dark .exam-card {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+.dark .exam-card h3    { color: #f1f5f9; }
+.dark .exam-card p     { color: #cbd5e1; }
+.dark .exam-badge      { color: #93c5fd; background: rgba(96, 165, 250, 0.2); }
+.dark .exam-link       { color: #60a5fa; }
+
+/* ============== Why grid - 4 cột ============== */
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.why-card {
+  padding: 24px 20px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  transition:
+    transform 1.1s var(--ease-out-soft),
+    box-shadow 1.1s var(--ease-out-soft),
+    border-color 1.1s var(--ease-out-soft);
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.45);
+  box-shadow: 0 18px 40px -12px rgba(37, 99, 235, 0.3);
+}
+
+.why-num {
+  font-size: 32px;
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(135deg, #2563eb, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.why-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.why-desc { font-size: 14px; color: #475569; line-height: 1.6; }
+
+.dark .why-card {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.14) 0%, rgba(15, 23, 42, 0) 100%);
+  border-color: rgba(96, 165, 250, 0.22);
+}
+
+.dark .why-title { color: #f1f5f9; }
+.dark .why-desc  { color: #cbd5e1; }
+
+@media (max-width: 960px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+/* ============== Help grid (3 thẻ trợ giúp) ============== */
+
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin: 32px 0 64px;
+}
+
+.help-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  text-decoration: none !important;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 1s var(--ease-out-soft),
+    box-shadow 1s var(--ease-out-soft),
+    border-color 1s var(--ease-out-soft),
+    background 1s var(--ease-out-soft);
+}
+
+.help-card:hover {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px -12px rgba(37, 99, 235, 0.25);
+}
+
+.help-icon { font-size: 28px; flex-shrink: 0; }
+.help-text { display: flex; flex-direction: column; gap: 2px; }
+.help-text strong { font-size: 15px; color: #1e40af; font-weight: 700; }
+.help-text span   { font-size: 13px; color: #64748b; }
+
+.dark .help-card {
+  background: rgba(30, 41, 59, 0.6);
+  border-color: rgba(148, 163, 184, 0.25);
+}
+.dark .help-card:hover     { background: rgba(96, 165, 250, 0.12); }
+.dark .help-text strong    { color: #93c5fd; }
+.dark .help-text span      { color: #cbd5e1; }
+
+/* ============== Scroll-reveal (dùng cho thẻ trên home) ============== */
+
+.reveal {
+  opacity: 0;
+  translate: 0 32px;
+  transition:
+    opacity 1.4s var(--ease-out-soft),
+    translate 1.4s var(--ease-out-soft);
+  will-change: opacity, translate;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.role-grid > .reveal:nth-child(1),
+.exam-grid > .reveal:nth-child(1),
+.why-grid  > .reveal:nth-child(1),
+.help-grid > .reveal:nth-child(1) { transition-delay: 0ms; }
+
+.role-grid > .reveal:nth-child(2),
+.exam-grid > .reveal:nth-child(2),
+.why-grid  > .reveal:nth-child(2),
+.help-grid > .reveal:nth-child(2) { transition-delay: 150ms; }
+
+.role-grid > .reveal:nth-child(3),
+.exam-grid > .reveal:nth-child(3),
+.why-grid  > .reveal:nth-child(3),
+.help-grid > .reveal:nth-child(3) { transition-delay: 300ms; }
+
+.exam-grid > .reveal:nth-child(4),
+.why-grid  > .reveal:nth-child(4) { transition-delay: 450ms; }
+
+.exam-grid > .reveal:nth-child(5) { transition-delay: 600ms; }
+.exam-grid > .reveal:nth-child(6) { transition-delay: 750ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .role-card, .exam-card, .why-card, .help-card,
+  .VPFeature, .VPHero .actions .VPButton {
+    transition: none !important;
+    transform: none !important;
+    translate: 0 0 !important;
+    opacity: 1 !important;
+  }
+}

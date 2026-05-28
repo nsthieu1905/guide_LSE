@@ -2,6 +2,7 @@
 import DefaultTheme from "vitepress/theme";
 import type { EnhanceAppContext } from "vitepress";
 import "./custom.css";
+import "./home.css";
 
 let observer: IntersectionObserver | null = null;
 
